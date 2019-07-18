@@ -1,0 +1,61 @@
+// Variable Overrides
+// $primary: green;
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: 'Quattrocento Sans', sans-serif !important;
+  line-height: 1.5 !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  color: #212529;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Work Sans', serif;
+  font-weight: 600 !important;
+  color: rgb(40, 44, 32);
+  //   text-decoration: none !important;
+}
+
+.disc {
+  list-style-type: disc !important;
+}
+.customLink {
+  color: #333;
+  text-decoration: none;
+}
+.customLink:hover {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.facebook-icon {
+  color: #3b5998;
+  cursor: pointer;
+}
+.facebook-icon:hover,
+.twitter-icon:hover,
+.instagram:hover {
+  filter: brightness(150%);
+}
+.twitter-icon {
+  color: #1da1f2;
+  cursor: pointer;
+}
+.instagram-icon {
+  color: #e95950;
+  cursor: pointer;
+}
+
+// Bootstrap Sass Imports
+@import '~bootstrap/scss/bootstrap.scss';

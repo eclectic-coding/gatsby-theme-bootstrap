@@ -1,13 +1,8 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import styled from '@emotion/styled'
-import { jsx, css } from '@emotion/core'
 
 import BackgroundImage from 'gatsby-background-image'
-
-const breakpoints = [576, 768, 992, 1200]
-
-const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
 
 const BackgroundSection = ({ className }) => (
   <StaticQuery

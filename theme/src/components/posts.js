@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react'
 import { Link } from 'gatsby'
-import { Styled, css } from 'theme-ui'
+// import { Styled, css } from 'theme-ui'
 import { FaCalendarDay as Date } from 'react-icons/fa'
+import { Container } from 'semantic-ui-react'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -9,60 +10,27 @@ import Footer from '../components/home-footer'
 
 const Posts = ({ location, posts, siteTitle, socialLinks }) => (
   <Layout location={location} title={siteTitle}>
-    <main>
+    <Container fluid style={{ width: `80vw`, margin: `0 auto` }}>
       {posts.map(({ node }) => {
         const title = node.title || node.slug
         const keywords = node.keywords || []
         return (
           <Fragment key={node.slug}>
             <SEO title="Home" keywords={keywords} />
-            <div
-              css={css({
-                px: `1rem`,
-                mt: `2rem`,
-              })}
-            >
-              <Styled.h2
-                css={css({
-                  mb: 1,
-                })}
-              >
-                <Styled.a
-                  as={Link}
-                  css={{
-                    textDecoration: `none`,
-                  }}
-                  to={`/${node.slug}`}
-                >
+            <div className="mt-4">
+              <h2>
+                <Link style={{ textDecoration: `none` }} to={`/${node.slug}`}>
                   {title}
-                </Styled.a>
-              </Styled.h2>
-              <Date
-                css={css({
-                  color: `primary`,
-                  mr: 2,
-                  md: 1,
-                })}
-              />
-              <small
-                css={css({
-                  mb: 2,
-                })}
-              >
-                {node.date}
-              </small>
-              <Styled.p
-                css={css({
-                  mt: 1,
-                })}
-              >
-                {node.excerpt}
-              </Styled.p>
+                </Link>
+              </h2>
+              <Date className="primary mr-2 mb-2" />
+              <small className="mb-2">{node.date}</small>
+              <p className="mb-4">{node.excerpt}</p>
             </div>
           </Fragment>
         )
       })}
-    </main>
+    </Container>
     <Footer socialLinks={socialLinks} />
   </Layout>
 )

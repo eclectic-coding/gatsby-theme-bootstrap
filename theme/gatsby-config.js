@@ -63,7 +63,7 @@ module.exports = options => {
       `gatsby-plugin-react-helmet`,
       `gatsby-plugin-twitter`,
       `gatsby-plugin-emotion`,
-      `gatsby-plugin-theme-ui`,
+      `gatsby-plugin-sass`,
     ].filter(Boolean),
   }
 }

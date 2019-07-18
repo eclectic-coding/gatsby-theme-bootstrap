@@ -1,23 +1,16 @@
-import React from 'react'
-import { css, Styled } from 'theme-ui'
+import React, { Fragment } from 'react'
+
 import Header from './header'
 import Hero from './hero'
 
+import '../styles/custom.scss'
+
 export default ({ children, ...props }) => (
-  <Styled.root>
+  <Fragment>
     <Header {...props} />
     <Hero />
     <div>
-      <div
-        css={css({
-          maxWidth: `container`,
-          mx: `auto`,
-          //   px: 3,
-          py: 1,
-        })}
-      >
-        {children}
-      </div>
+      <div>{children}</div>
     </div>
-  </Styled.root>
+  </Fragment>
 )

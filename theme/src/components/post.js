@@ -1,11 +1,13 @@
 import React from 'react'
-import { Styled, css } from 'theme-ui'
 import { FaCalendar } from 'react-icons/fa'
 
 // import PostFooter from "../components/post-footer"
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+
+import '../styles/custom.scss'
+import { Container } from 'reactstrap'
 
 const Post = ({
   data: {
@@ -20,26 +22,14 @@ const Post = ({
 }) => (
   <Layout location={location} title={title}>
     <SEO title={post.title} description={post.excerpt} />
-    <main>
-      <Styled.h1>{post.title}</Styled.h1>
-      <Styled.p
-        css={css({
-          fontSize: 1,
-          mt: -3,
-          mb: 3,
-        })}
-      >
-        <FaCalendar
-          css={css({
-            color: `primary`,
-            mx: 1,
-            mt: 1,
-          })}
-        />
-        {post.date}
-      </Styled.p>
+    <Container className="primary mt-4">
+      <h1>{post.title}</h1>
+      <p>
+        <FaCalendar className="text-primary mr-2" />
+        <small>{post.date}</small>
+      </p>
       <MDXRenderer>{post.body}</MDXRenderer>
-    </main>
+    </Container>
     {/* <PostFooter {...{ previous, next }} /> */}
   </Layout>
 )

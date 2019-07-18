@@ -1,102 +1,29 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { css, useColorMode, Styled } from 'theme-ui'
-import Switch from './switch'
-import sun from '../../assets/sun.png'
-import moon from '../../assets/moon.png'
+import { Container } from 'semantic-ui-react'
 
 const rootPath = `${__PATH_PREFIX__}/`
 
 const Title = ({ children }) => {
   return (
-    <Styled.h3
-      css={css({
-        my: 0,
-        fontSize: 4,
-      })}
-    >
-      <Styled.a
-        as={Link}
-        css={{
-          color: `inherit`,
-          boxShadow: `none`,
-          textDecoration: `none`,
-        }}
-        to={`/`}
-      >
-        {children}
-      </Styled.a>
-    </Styled.h3>
+    <h1 style={{ padding: `1rem 0` }}>
+      <Link to={`/`}>{children}</Link>
+    </h1>
   )
 }
 
-const checkedIcon = (
-  <img
-    alt="moon indicating dark mode"
-    src={moon}
-    width="16"
-    height="16"
-    role="presentation"
-    css={{
-      pointerEvents: `none`,
-      margin: 4,
-    }}
-  />
-)
-
-const uncheckedIcon = (
-  <img
-    alt="sun indicating light mode"
-    src={sun}
-    width="16"
-    height="16"
-    role="presentation"
-    css={{
-      pointerEvents: `none`,
-      margin: 4,
-    }}
-  />
-)
-
 export default ({ children, title, ...props }) => {
-  const [colorMode, setColorMode] = useColorMode()
-  const isDark = colorMode === `dark`
-  const toggleColorMode = e => {
-    setColorMode(isDark ? `light` : `dark`)
-  }
-
   return (
-    <header>
-      <div
-        css={css({
-          maxWidth: `container`,
-          mx: `auto`,
-          px: 3,
-          py: 2,
-        })}
-      >
-        <div
-          css={css({
-            display: `flex`,
-            justifyContent: `space-between`,
-            alignItems: `baseline`,
-          })}
-        >
-          <Title {...props}>{title}</Title>
-          {children}
-          <Switch
-            aria-label="Toggle dark mode."
-            css={css({
-              bg: `black`,
-            })}
-            checkedIcon={checkedIcon}
-            uncheckedIcon={uncheckedIcon}
-            checked={isDark}
-            onChange={toggleColorMode}
-          />
+    <Container>
+      <header>
+        <div>
+          <div>
+            <Title {...props}>{title}</Title>
+            {children}
+          </div>
+          {props.location.pathname === rootPath}
         </div>
-        {props.location.pathname === rootPath}
-      </div>
-    </header>
+      </header>
+    </Container>
   )
 }

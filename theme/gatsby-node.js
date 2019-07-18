@@ -5,7 +5,7 @@ const crypto = require(`crypto`)
 const Debug = require(`debug`)
 const { urlResolve } = require(`gatsby-core-utils`)
 
-const debug = Debug(`gatsby-theme-semantic-ui`)
+const debug = Debug(`gatsby-theme-bootstrap`)
 
 // These are customizable theme options we only need to check once
 let basePath
@@ -208,4 +208,17 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId }) => {
     })
     createParentChildLink({ parent: fileNode, child: node })
   }
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        '../../theme.config$': path.join(
+          __dirname,
+          'src/semantic/theme.config'
+        ),
+      },
+    },
+  })
 }
